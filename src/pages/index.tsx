@@ -1,8 +1,14 @@
 import Head from "next/head";
 import { api } from "@/utils/api";
+import { useState } from "react";
+
+type Modal = {
+  mode: 'edit' | 'create' | undefined,
+  show: boolean
+}
 
 export default function Home() {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const [modal, setModal] = useState<Modal>({mode: 'create',show: false})
   return (
     <>
       <Head>
